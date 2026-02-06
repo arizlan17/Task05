@@ -7,27 +7,25 @@ import java.util.List;
 
 public class Customer {
 
-    private final String  customerId;
+    private  String  customerId;
     private String customerName;
     private String emailAddress;
     private String phoneNumber;
     private List<BankAccount> accounts;
 
-    public Customer( String customerName, String emailAddress, String phoneNumber) {
-        this.customerId= String.valueOf(uniqueNumber.generateCustomerId());
-        this.customerName = customerName;
-        this.emailAddress = emailAddress;
+    public Customer(String customerId, String phoneNumber, String emailAddress, String customerName) {
+        this.customerId = customerId;
         this.phoneNumber = phoneNumber;
-        this.accounts = new ArrayList<>();
+        this.emailAddress = emailAddress;
+        this.customerName = customerName;
     }
 
-
-    public List<BankAccount> getAccounts() {
-        return accounts;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setAccounts(List<BankAccount> accounts) {
-        this.accounts = accounts;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
     public String getCustomerName() {
@@ -54,13 +52,11 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "customerId='" + customerId + '\'' +
-                ", customerName='" + customerName + '\'' +
-                ", emailAddress='" + emailAddress + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                '}';
+    public List<BankAccount> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<BankAccount> accounts) {
+        this.accounts = accounts;
     }
 }

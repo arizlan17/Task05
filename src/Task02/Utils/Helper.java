@@ -45,6 +45,18 @@ public class Helper {
     }
 
 
+    public static String validateIdNumberInput(String prompt, String ReenterPrompt){
+
+        while(true){
+            System.out.println(prompt);
+            String IdNum = scanner.nextLine().trim();
+            if (IdNum.matches("^\\d{10}v$")){
+                return IdNum;
+            }else {
+                System.out.println(ReenterPrompt);
+            }}
+    }
+
 
     public static int validateIntInput(String prompt, String ReenterPrompt){
         int validNumber;
