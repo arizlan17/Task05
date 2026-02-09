@@ -1,3 +1,5 @@
+package Task01;
+
 public class ExcerciseB {
     public static void main(String[] args) {
         int x =5;

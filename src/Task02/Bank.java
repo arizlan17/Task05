@@ -56,7 +56,7 @@ public class Bank {
             System.out.println("1. Add New Customer");
             System.out.println("2. Delete Customer");
             System.out.println("3. View Customer Info");
-            System.out.println("0. Back to Main Menu");
+            System.out.println("0. Back to Task01.Main Menu");
             System.out.println("\nEnter your choice:");
 
             String choice = scanner.nextLine().trim();
@@ -81,7 +81,7 @@ public class Bank {
             System.out.println("4. Deposit Money");
             System.out.println("5. Withdraw Money");
             System.out.println("6. View Transaction History");
-            System.out.println("0. Back to Main Menu");
+            System.out.println("0. Back to Task01.Main Menu");
             System.out.println("\nEnter your choice:");
 
             String choice = scanner.nextLine().trim();

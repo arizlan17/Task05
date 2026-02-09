@@ -1,3 +1,5 @@
+package Task01;
+
 class Books{
     String title;
     String author;
@@ -30,6 +32,6 @@ public class BooksTestDrive {
 }
 //Exception in thread "main" java.lang.NullPointerException: Cannot assign field "title" because "myBooks[0]" is null
 //THis wont compile bcz no books been initiated
-//to fix this we should initiate Books
-//Books[] myBooks = new Books[3];
+//to fix this we should initiate Task01.Books
+//Task01.Books[] myBooks = new Task01.Books[3];
 //the above means myBooks array can hold 3 items
