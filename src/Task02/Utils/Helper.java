@@ -6,25 +6,24 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import static Task02.constant.constant.*;
+
 public class Helper {
     private static Scanner scanner = new Scanner(System.in);
-    private static final String EMAIL_REGEX = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
 
 
     public static String validateStringInput(String prompt, String ReenterPrompt){
-        System.out.println(prompt);//Enter the Name
+        System.out.println(prompt);
         String variableValue = scanner.nextLine().trim();
-        while(variableValue.isEmpty()){
-            System.out.println(ReenterPrompt);
-            variableValue = scanner.nextLine();
+            return variableValue;
+
         }
-        return variableValue;
-    }
+
 
     public static String validateEmailInput(String prompt, String ReenterPrompt){
 
+        System.out.println(prompt);
         while(true){
-            System.out.println(prompt);
             String validEmail = scanner.nextLine().trim();
             if (Pattern.matches(EMAIL_REGEX,validEmail)){
                 return validEmail;
@@ -36,10 +35,11 @@ public class Helper {
 
     public static String validatePhoneNumberInput(String prompt, String ReenterPrompt){
 
+        System.out.println(prompt);
+
         while(true){
-            System.out.println(prompt);
             String PhoneNumber = scanner.nextLine().trim();
-            if (PhoneNumber.matches("^\\d{10}$")){
+            if (PhoneNumber.matches(PNUM_REGEX)){
                 return PhoneNumber;
             }else {
             System.out.println(ReenterPrompt);
@@ -48,15 +48,17 @@ public class Helper {
 
 
     public static String validateIdNumberInput(String prompt, String ReenterPrompt){
-
+        System.out.println(prompt);
         while(true){
-            System.out.println(prompt);
             String IdNum = scanner.nextLine().trim();
-            if (IdNum.matches("^\\d{10}v$")){
+
+            if (IdNum.length() == IDNumberLength && IdNum.matches(IDNUM_REGEX)){
                 return IdNum;
             }else {
                 System.out.println(ReenterPrompt);
-            }}
+            }
+            }
+
     }
 
 
@@ -66,8 +68,8 @@ public class Helper {
 
         while(true){
             try{
-                validNumber = scanner.nextInt();
-                scanner.nextLine();
+                validNumber = Integer.parseInt(scanner.nextLine().trim());
+
                 return validNumber;
             }catch (InputMismatchException e){
                 System.out.println(ReenterPrompt);
@@ -118,12 +120,8 @@ public class Helper {
         while(true){
             try{
                 String InputNumber = scanner.nextLine().trim();
-                if((InputNumber.length()>=8)) {
                     validNumber = Integer.parseInt(InputNumber);
                     return validNumber;
-                }else {
-                    System.out.println(ReenterPrompt);
-                }
             }catch (InputMismatchException e){
                 System.out.println(ReenterPrompt);
             }

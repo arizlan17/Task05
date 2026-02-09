@@ -29,16 +29,15 @@ public class Bank {
             System.out.println("2. Account Management");
             System.out.println("0. Exit System");
 
-            int mainChoice = Helper.validateIntInput("Select Category: ", "Invalid input: ");
-
+            String mainChoice = scanner.nextLine().trim();
             switch (mainChoice) {
-                case 1:
+                case "1":
                     runCustomerMenu(myBank);
                     break;
-                case 2:
+                case "2":
                     runAccountMenu(myBank);
                     break;
-                case 0:
+                case "0":
                     systemRunning = false;
                     System.out.println("Shutting down...");
                     break;
@@ -92,9 +91,9 @@ public class Bank {
 
 
     public void adCustomer(){
-        String customerId = Helper.validateIdNumberInput("Enter Id Number - ","Re-Enter Valid Id Number - ");
+        String customerId = Helper.validateIdNumberInput("Enter Id Number - ","Re-Enter Valid Id Number (123456789V)- ");
         String customerName = Helper.validateStringInput("Enter Customer Name - ","Re-Enter Customer Name - ");
-        String customerEmail = Helper.validateEmailInput("Enter Customer Email - ","Re-enter  a valid Email - ");
+        String customerEmail = Helper.validateEmailInput("Enter Customer Email - ","Re-enter a valid Email (xxxx@gmail.com)- ");
         String customerPhoneNumber = Helper.validatePhoneNumberInput("Enter Customer Phone Number","Re-Enter Valid Phone Number");
         Customer newCustomer = new Customer(customerId,customerName,customerEmail,customerPhoneNumber);
         System.out.println(newCustomer+ " - Customer Created" );
@@ -107,7 +106,7 @@ public class Bank {
     }
 
     public void createAccount() {
-        String IdNumber = Helper.validateIdNumberInput("Enter Customer Id Number - ", "Re-Enter Valid Id Number - ");
+        String IdNumber = Helper.validateIdNumberInput("Enter Customer Id Number - ", "Re-Enter Valid Id Number(123456789V) - ");
         Optional<Customer> searchedCustomer = CustomerFinder.getCustomer(IdNumber, bankCustomers);
         searchedCustomer.ifPresentOrElse(
                 customer -> {
@@ -135,7 +134,8 @@ public class Bank {
             String IdNumber = Helper.validateIdNumberInput("Enter Customer Id Number - ", "Re-Enter Valid Id Number - ");
             Optional<Customer> searchedCustomer = CustomerFinder.getCustomer(IdNumber, bankCustomers);
             searchedCustomer.ifPresentOrElse(
-                    Customer::toString, () -> {
+                    Customer->{
+                        System.out.println(Customer.toString());}, () -> {
                         System.out.println("No Customer Found with the Entered IDNumber");
                     }
             );

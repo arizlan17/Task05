@@ -11,7 +11,7 @@ public class Customer {
     private String phoneNumber;
     private List<BankAccount> accounts;
 
-    public Customer(String customerId, String phoneNumber, String emailAddress, String customerName) {
+    public Customer(String customerId, String customerName, String emailAddress, String phoneNumber) {
         this.customerId = customerId;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
