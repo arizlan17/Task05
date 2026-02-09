@@ -78,14 +78,20 @@ public class Bank {
             System.out.println("1. Create New Account");
             System.out.println("2. Delete Account");
             System.out.println("3. View Account Info");
+            System.out.println("4. Deposit Money");
+            System.out.println("5. Withdraw Money");
+            System.out.println("6. View Transaction History");
             System.out.println("0. Back to Main Menu");
             System.out.println("\nEnter your choice:");
 
             String choice = scanner.nextLine().trim();
             switch (choice) {
-                case "1": bank.createAccount();back = true; break;
-                case "2": bank.deleteAccount(); back = true;break;
-                case "3": bank.getAccountInfo();back = true; break;
+                case "1": bank.createAccount();break;
+                case "2": bank.deleteAccount(); break;
+                case "3": bank.getAccountInfo();break;
+                case "4": bank.depositToAccount(); break;
+                case "5": bank.withdrawFromAccount(); break;
+                case "6": bank.showTransactionHistory(); break;
                 case "0": back = true; break;
                 default: System.out.println("Invalid option.");
             }
@@ -157,9 +163,49 @@ public class Bank {
         );
     }
 
+    /**
+     * Allows a user to deposit money into their account
+     */
+    public void depositToAccount() {
+        int accountNumber = Helper.validateAccountNumberInput("Enter Account Number - ", "Re-Enter Valid Account Number - ");
+        Optional<BankAccount> searchedAccount = AccountFinder.getAccount(accountNumber, bankAccounts);
+        searchedAccount.ifPresentOrElse(
+                account -> {
+                    System.out.println("Account Found - Holder: " + account.getHolderName());
+                    double depositAmount = Helper.validateDoubleInput("Enter Deposit Amount - ", "Invalid Amount. Please Enter a Valid Deposit Amount - ");
+                    account.deposit(depositAmount);
+                },
+                () -> System.out.println("No Account Found with the Entered Account Number")
+        );
+    }
 
+    /**
+     * Allows a user to withdraw money from their account
+     */
+    public void withdrawFromAccount() {
+        int accountNumber = Helper.validateAccountNumberInput("Enter Account Number - ", "Re-Enter Valid Account Number - ");
+        Optional<BankAccount> searchedAccount = AccountFinder.getAccount(accountNumber, bankAccounts);
+        searchedAccount.ifPresentOrElse(
+                account -> {
+                    System.out.println("Account Found - Holder: " + account.getHolderName());
+                    System.out.println("Current Balance: $" + account.getAccountBalance());
+                    double withdrawAmount = Helper.validateDoubleInput("Enter Withdrawal Amount - ", "Invalid Amount. Please Enter a Valid Withdrawal Amount - ");
+                    account.withdraw(withdrawAmount);
+                },
+                () -> System.out.println("No Account Found with the Entered Account Number")
+        );
+    }
 
-
-
-
+    /**
+     * Display the transaction history for a specific account
+     */
+    public void showTransactionHistory() {
+        int accountNumber = Helper.validateAccountNumberInput("Enter Account Number - ", "Re-Enter Valid Account Number - ");
+        Optional<BankAccount> searchedAccount = AccountFinder.getAccount(accountNumber, bankAccounts);
+        searchedAccount.ifPresentOrElse(
+                BankAccount::viewTransactionHistory,
+                () -> System.out.println("No Account Found with the Entered Account Number")
+        );
+    }
 }
+
