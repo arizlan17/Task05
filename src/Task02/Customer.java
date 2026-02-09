@@ -1,7 +1,5 @@
 package Task02;
 
-import Task02.Utils.uniqueNumber;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +16,7 @@ public class Customer {
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
         this.customerName = customerName;
+        this.accounts = new ArrayList<>();
     }
 
     public String getCustomerId() {
@@ -56,7 +55,19 @@ public class Customer {
         return accounts;
     }
 
-    public void setAccounts(List<BankAccount> accounts) {
-        this.accounts = accounts;
+    public void setAccounts(BankAccount account) {
+        this.accounts.add(account);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerId='" + customerId + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", accounts=" + accounts.toString()+
+                '}';
     }
 }

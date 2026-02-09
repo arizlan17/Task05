@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class CustomerFinder {
     static Scanner scanner = new Scanner(System.in);
@@ -26,12 +25,18 @@ public class CustomerFinder {
                     return "Customer Deleted from the Database";
                 }
                 if (Confirmation.equalsIgnoreCase("N")){
-                    customerList.removeIf(customer -> Objects.equals(customer.getCustomerId(), CustomerId) );
                     return "Customer Not Deleted from the Database";
                 }
 
             }
         }
+    }
+    
+    
+    public static Optional<Customer> getCustomer(String CustomerId, List<Customer>customerList){
+        Optional<Customer> searchedCustomer = customerList.stream().filter(customer -> Objects.equals(customer.getCustomerId(), CustomerId)).findFirst();
+        return searchedCustomer;
+
     }
 
 
