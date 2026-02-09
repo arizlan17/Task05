@@ -8,19 +8,86 @@ import Task02.Utils.Helper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
 
 
 public class Bank {
     List <Customer> bankCustomers= new ArrayList<Customer>();
     List<BankAccount>bankAccounts = new ArrayList<BankAccount>();
 
+    static Scanner scanner = new Scanner(System.in);
 
 
 
     public static void main(String[] args) {
+        Bank myBank = new Bank();
+        boolean systemRunning = true;
 
+        while (systemRunning) {
+            System.out.println("\n--- BANK MAIN MENU ---");
+            System.out.println("1. Customer Management");
+            System.out.println("2. Account Management");
+            System.out.println("0. Exit System");
 
+            int mainChoice = Helper.validateIntInput("Select Category: ", "Invalid input: ");
 
+            switch (mainChoice) {
+                case 1:
+                    runCustomerMenu(myBank);
+                    break;
+                case 2:
+                    runAccountMenu(myBank);
+                    break;
+                case 0:
+                    systemRunning = false;
+                    System.out.println("Shutting down...");
+                    break;
+                default:
+                    System.out.println("Invalid option.");
+            }
+        }
+    }
+
+    // Sub-menu for Customer actions
+    private static void runCustomerMenu(Bank bank) {
+        boolean back = false;
+        while (!back) {
+            System.out.println("\n--- CUSTOMER MANAGEMENT ---");
+            System.out.println("1. Add New Customer");
+            System.out.println("2. Delete Customer");
+            System.out.println("3. View Customer Info");
+            System.out.println("0. Back to Main Menu");
+
+            String choice = scanner.nextLine().trim();
+            switch (choice) {
+                case "1": bank.adCustomer(); break;
+                case "2": bank.deleteCustomer(); break;
+                case "3": bank.getCustomerInfo(); break;
+                case "0": back = true; break;
+                default: System.out.println("Invalid option.");
+            }
+        }
+    }
+
+    // Sub-menu for Account actions
+    private static void runAccountMenu(Bank bank) {
+        boolean back = false;
+        while (!back) {
+            System.out.println("\n--- ACCOUNT MANAGEMENT ---");
+            System.out.println("1. Create New Account");
+            System.out.println("2. Delete Account");
+            System.out.println("3. View Account Info");
+            System.out.println("0. Back to Main Menu");
+
+            String choice = scanner.nextLine().trim();
+            switch (choice) {
+                case "1": bank.createAccount(); break;
+                case "2": bank.deleteAccount(); break;
+                case "3": bank.getAccountInfo(); break;
+                case "0": back = true; break;
+                default: System.out.println("Invalid option.");
+            }
+        }
     }
 
 
