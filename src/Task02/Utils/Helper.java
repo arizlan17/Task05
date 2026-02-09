@@ -101,7 +101,7 @@ public class Helper {
             String selectedProductNumber = scanner.nextLine().trim();
             try {
                 int choice =  Integer.parseInt(selectedProductNumber);
-                if (choice > 0 && choice< types.length){
+                if (choice > 0 && choice<= types.length){
                     return types[choice-1];
                 }else {
                     System.out.println("Invalid Selection. Please Choose a valid Number .");
@@ -119,11 +119,11 @@ public class Helper {
 
         while(true){
             try{
-                String InputNumber = scanner.nextLine().trim();
-                    validNumber = Integer.parseInt(InputNumber);
+                    validNumber = scanner.nextInt();
                     return validNumber;
             }catch (InputMismatchException e){
                 System.out.println(ReenterPrompt);
+                scanner.nextLine();
             }
         }
     }

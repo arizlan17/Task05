@@ -36,7 +36,7 @@ public class AccountFinder {
         );
     }
 
-    public static Optional<BankAccount> getAccount(String AccountNumber, List<BankAccount>accountList){
+    public static Optional<BankAccount> getAccount(int AccountNumber, List<BankAccount>accountList){
         Optional<BankAccount> searchedAccount = accountList.stream().filter(account -> Objects.equals(account.getAccountNumber(), AccountNumber)).findFirst();
         return searchedAccount;
 
