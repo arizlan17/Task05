@@ -1,34 +1,31 @@
 package Task04;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
 
 
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            ArrayList<String> names = new ArrayList<>();
+    public static void main(String[] args) {
 
-            System.out.println("Enter names (type 'done' to finish):");
+        Scanner scanner = new Scanner(System.in);
+        HashMap<Character,Integer> characterMap = new HashMap<>();
 
-            while (true) {
-                String name = scanner.nextLine();
-                if (name.equalsIgnoreCase("done")) {
-                    break;
-                }
-                names.add(name);
-            }
+        System.out.println("Enter a String - ");
+        String input = scanner.nextLine();
 
-            Collections.sort(names);
 
-            System.out.println("\nNames in alphabetical order:");
-            for (String name : names) {
-                System.out.println(name);
-            }
+        for (Character inputChar : input.toCharArray()) {
+            characterMap.put(inputChar, characterMap.get(inputChar) == null ? 1 : characterMap.get(inputChar) + 1);
 
-            scanner.close();
+
         }
 
+        for (Character key : characterMap.keySet()) {
+            System.out.println(key + " -> " + characterMap.get(key));
+
+        }
+
+    }
 }
