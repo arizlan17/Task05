@@ -4,7 +4,7 @@ public class CircularTrainSchedule {
     private TrainNode head = null;
     private TrainNode tail = null;
 
-    // Task 6: Introduce a circular linked list to represent the schedule
+    //  circular linked list to represent the schedule
     public void addTrainToSchedule(String name, String type) {
         TrainNode newNode = new TrainNode(name, type);
         if (head == null) {
