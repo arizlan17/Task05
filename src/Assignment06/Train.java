@@ -13,7 +13,7 @@ public class Train {
     public Train(String name, String type, int priority, int capacity) {
         this.name = name;
         this.type = type;
-        this.priority = priority; // Express = 1, Local = 2 [cite: 14]
+        this.priority = priority; // Express = 1, Local = 2
         this.capacity = capacity;
         this.schedule = new ArrayList<>();
     }

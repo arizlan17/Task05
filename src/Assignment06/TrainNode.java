@@ -2,7 +2,7 @@ package Assignment06;
 
 class TrainNode {
     String trainName;
-    String type; // e.g., "Express" or "Local" [cite: 14]
+    String type; // e.g., "Express" or "Local"
     TrainNode next;
 
     public TrainNode(String name, String type) {

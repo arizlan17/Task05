@@ -4,10 +4,10 @@ import java.util.*;
 
 public class Station {
     String name;
-    String stationCode; // Requirement: Station code 
-    double distanceToStart; // Requirement: Distance from starting station 
-    List<Station> connections; // Requirement: List of connecting stations [cite: 6, 15]
-    int passengerCount; // Requirement: Simulation statistics [cite: 19]
+    String stationCode; // Station code
+    double distanceToStart; // Distance from starting station
+    List<Station> connections; //  List of connecting stations
+    int passengerCount; //  Simulation statistics
 
     public Station(String name, String stationCode, double distanceToStart) {
         this.name = name;

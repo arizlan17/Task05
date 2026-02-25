@@ -4,17 +4,21 @@ import java.util.*;
 
 public class TrainSimulationApp {
     public static void main(String[] args) {
-        // --- 1. Setup Stations (Tasks 1 & 8) ---
+        // ---  Setup Stations  ---
         Station AA = new Station("Alpha Alpha", "AA", 0);
-        Station BB = new Station("Bravo Bravo", "BB", 1);
+//        Station BB = new Station("Bravo Bravo", "BB", 1);
+        Station BB = new Station("Bravo Bravo", "BB", 10);
+
         Station BC = new Station("Bravo Charlie", "BC", 2);
         Station BD = new Station("Bravo Delta", "BD", 3);
         Station BE = new Station("Bravo Echo", "BE", 5);
-        Station CC = new Station("Charlie Charlie", "CC", 20);
+//        Station CC = new Station("Charlie Charlie", "CC", 20);
+                Station CC = new Station("Charlie Charlie", "CC", 2);
+
         Station DD = new Station("Delta Delta", "DD", 4.5);
         Station EE = new Station("Echo Echo", "EE", 6);
 
-        // --- 2. Setup Physical Track (Task 2: Doubly Linked List) ---
+        // --- Setup Physical Track - Doubly Linked List ---
         TrainJourney physicalTrack = new TrainJourney();
         physicalTrack.addStation(AA);
         physicalTrack.addStation(BB);
@@ -25,7 +29,15 @@ public class TrainSimulationApp {
         physicalTrack.addStation(DD);
         physicalTrack.addStation(EE);
 
-        // --- 3. Setup Station Connections (Task 8: Graph) ---
+        // --- 3. Setup Station Connections  ---
+//        AA -(1)- BB-(2)-BC -(3)- BD -(5)-BE-(6)-EE
+//               |                 |              |
+//              (20)               |              |
+//               |                 |              |
+//               CC  -------(4.5)- DD             |
+//                |-------------------------------
+//
+
         AA.addConnection(BB);
         BB.addConnection(BC);
         BB.addConnection(CC);
@@ -36,11 +48,11 @@ public class TrainSimulationApp {
         CC.addConnection(DD);
         CC.addConnection(EE);
 
-        // Print Track and Connections (Task 4)
+        // Print Track and Connections
         System.out.println("--- Task 4: Physical Track & Graph Connections ---");
         physicalTrack.printTrack();
 
-        // ---  (Task 5: Dijkstra's) ---
+        // ---  ( Dijkstra's) ---
         TrainGraph networkGraph = new TrainGraph();
         networkGraph.addStation(AA);
         networkGraph.addStation(BB);
@@ -58,7 +70,7 @@ public class TrainSimulationApp {
         }
         System.out.println("Destination Reached\n");
 
-        // --- 5. Train Schedule (Task 6: Circular Linked List) ---
+        // --- Train Schedule (Circular Linked List) ---
         CircularTrainSchedule schedule = new CircularTrainSchedule();
         schedule.addTrainToSchedule("Express-700", "Express");
         schedule.addTrainToSchedule("Local-Blue", "Local");
@@ -67,29 +79,31 @@ public class TrainSimulationApp {
         System.out.println("--- Task 6: Circular Train Schedule ---");
         schedule.displaySchedule();
 
-        // --- 6. Train Arrival Management (Task 7: Priority Queue) ---
+        // --- Train Arrival Management  ---
         StationArrivalManager arrivalManager = new StationArrivalManager();
         arrivalManager.trainApproaching(new Train("Local-Blue", "Local", 2, 50));
         arrivalManager.trainApproaching(new Train("Express-700", "Express", 1, 100)); // Priority 1
 
         System.out.println("\n--- Task 7: Priority Arrivals ---");
-        arrivalManager.allowNextTrainToDock(); // Should pull the Express train first
+        arrivalManager.allowNextTrainToDock();
+        // Should pull the Express train first
 
 
 
-        // --- 7. Passenger Boarding (Task 9: Queue) ---
+        // --- Passenger Boarding  ---
         BoardingSystem boarding = new BoardingSystem();
         boarding.addPassengerToLine(new Passenger("Alice"));
         boarding.addPassengerToLine(new Passenger("Bob"));
 
         System.out.println("\n--- Task 9: Passenger Boarding (FIFO) ---");
-        boarding.simulateBoarding(2); // Boards in first-come, first-served order
+        boarding.simulateBoarding(2);
+// Boards in first-come, first-served order
 
-        // --- 8. Simulation Statistics (Task 10) ---
+        // --- Simulation Statistics  ---
         SimulationStats stats = new SimulationStats();
         stats.recordStationData("AA", 5);
         stats.recordBoardingTime(5);
         stats.recordStationData("EE", 15);
-        stats.displayStats(); // Displays gathered simulation data [cite: 19]
+        stats.displayStats(); // Displays gathered simulation data
     }
 }
