@@ -6,14 +6,13 @@ public class TrainSimulationApp {
     public static void main(String[] args) {
         // ---  Setup Stations  ---
         Station AA = new Station("Alpha Alpha", "AA", 0);
-//        Station BB = new Station("Bravo Bravo", "BB", 1);
-        Station BB = new Station("Bravo Bravo", "BB", 10);
-
+        Station BB = new Station("Bravo Bravo", "BB", 1);
+//        Station BB = new Station("Bravo Bravo", "BB", 10);
         Station BC = new Station("Bravo Charlie", "BC", 2);
         Station BD = new Station("Bravo Delta", "BD", 3);
         Station BE = new Station("Bravo Echo", "BE", 5);
-//        Station CC = new Station("Charlie Charlie", "CC", 20);
-                Station CC = new Station("Charlie Charlie", "CC", 2);
+        Station CC = new Station("Charlie Charlie", "CC", 20);
+//        Station CC = new Station("Charlie Charlie", "CC", 2);
 
         Station DD = new Station("Delta Delta", "DD", 4.5);
         Station EE = new Station("Echo Echo", "EE", 6);
@@ -30,9 +29,9 @@ public class TrainSimulationApp {
         physicalTrack.addStation(EE);
 
         // --- 3. Setup Station Connections  ---
-//        AA -(1)- BB-(2)-BC -(3)- BD -(5)-BE-(6)-EE
+//        AA -(1)- BB-(10)-BC -(3)- BD -(5)-BE-(6)-EE
 //               |                 |              |
-//              (20)               |              |
+//              (2)               |              |
 //               |                 |              |
 //               CC  -------(4.5)- DD             |
 //                |-------------------------------
@@ -86,6 +85,8 @@ public class TrainSimulationApp {
 
         System.out.println("\n--- Task 7: Priority Arrivals ---");
         arrivalManager.allowNextTrainToDock();
+        arrivalManager.allowNextTrainToDock();
+
         // Should pull the Express train first
 
 

@@ -9,6 +9,7 @@ public class Inventory {
     private Vehicle[] vehicles;
 
     public Inventory(Vehicle[] vehicles) {
+
         this.vehicles = vehicles;
     }
 

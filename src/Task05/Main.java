@@ -20,7 +20,6 @@ public class Main {
                 }
                 names.add(name);
             }
-
             Collections.sort(names);
 
             System.out.println("\nNames in alphabetical order:");

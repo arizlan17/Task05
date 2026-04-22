@@ -29,9 +29,6 @@ public class Task06 {
         String EndingStation = getStationInputs("Enter ending station name: ");
         printPathStations(stationsMap,StartingStation,EndingStation);
 
-
-
-
     }
 
 
@@ -66,9 +63,6 @@ public class Task06 {
                     System.out.print("Your Destination -> ");
                 }
                 System.out.println(stationsMap.get(i));
-
-
-
             }
         } else {
             System.out.println("Invalid station names entered.");

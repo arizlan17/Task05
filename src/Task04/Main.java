@@ -18,13 +18,10 @@ public class Main {
 
         for (Character inputChar : input.toCharArray()) {
             characterMap.put(inputChar, characterMap.get(inputChar) == null ? 1 : characterMap.get(inputChar) + 1);
-
-
         }
 
         for (Character key : characterMap.keySet()) {
             System.out.println(key + " -> " + characterMap.get(key));
-
         }
 
     }
